@@ -1,0 +1,90 @@
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 80px; /* Adjust according to your navbar height */
+  width: 240px;
+  height: calc(100vh - 80px); /* Ensures it fits below the navbar */
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif; /* Matching font */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  border-right: 1px solid #ddd; /* Light border for separation */
+}
+
+/* Sidebar Navigation */
+.sidebar nav {
+  flex-grow: 1; /* Allows nav to take up available space */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Sidebar List Items */
+.sidebar nav ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  padding: 12px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Active Menu Item */
+.sidebar nav ul li.active {
+  background-color: #4CAF50; /* Green highlight */
+  color: white;
+  border-radius: 8px;
+}
+
+/* Active Link Color */
+.sidebar nav ul li.active a {
+  color: white;
+}
+
+/* Hover Effects */
+.sidebar nav ul li:hover {
+  background-color: #ddd;
+}
+
+.sidebar nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+/* Icons */
+.sidebar nav ul li a img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Logout Button */
+.logout-button {
+  margin-top: auto; /* Push logout to bottom */
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: darkgreen;
+}
