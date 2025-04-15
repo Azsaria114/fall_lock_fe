@@ -1,9 +1,10 @@
 import React from "react";
 import "./Navbar.css"
-import govEmblem from "../assets/tn_logo.png"; 
-import profile from "../assets/profile.webp";
-
+import govEmblem from "../../assets/tn_logo.png"; 
+import profile from "../../assets/profile.webp";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       {/* Navbar */}
@@ -18,7 +19,10 @@ const Navbar = () => {
 
         {/* Right Side (Register Button + Profile) */}
         <div className="nav-right">
-          <button className="register-btn"style={{fontSize:"18px"}}>Register</button>
+          <button className="register-btn"onClick={() => {
+                console.log("Register button clicked");
+                navigate("/register");
+              }} style={{fontSize:"18px"}}>Register</button>
           <img src={profile} alt="Profile" className="profile-pic" />
         </div>
       </nav>

@@ -20,7 +20,7 @@
 /* Main Section */
 .main {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
   background: white;
   margin-left: 250px; /* Same width as the sidebar */
 }
@@ -36,8 +36,8 @@
 }
 .bg-containerbody {
   background-color: #00a651;
-  
-  padding: 20px;
+/*   
+  padding: 20px; */
   font-family: Arial, sans-serif;
   text-align: center;
 }

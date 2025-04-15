@@ -13,7 +13,7 @@ const Sidebar = () => {
       <nav>
         <ul>
           <li className={location.pathname === "/" ? "active" : ""}>
-            <Link to="/">🏠 Home</Link>
+            <Link to="/fallLockSystem">🏠 Home</Link>
           </li>
           <li>
             <Link to="#">👤 About</Link>

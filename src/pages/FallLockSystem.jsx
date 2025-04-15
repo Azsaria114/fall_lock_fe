@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../common/Navbar";
-import Sidebar from "../common/Sidebar";
+import Navbar from "../components/common/Navbar";
+import Sidebar from "../components/common/Sidebar";
 import "./FallLockSystem.css";
 import borewell from "../assets/borewell.png";
 import rescue from "../assets/rescue.png";
@@ -139,7 +139,7 @@ const FallLockSystem = () => {
 <section className="cta">
   <div className="cta-container">
     <img src={safety} alt="Safety" className="cta-image"/>
-    <button className="cta-button">Register</button>
+    
   </div>
 </section>
 

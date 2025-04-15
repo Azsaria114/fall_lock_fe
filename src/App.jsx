@@ -1,11 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
-import FallLockSystem from './components/FallLockSystem';
-import './App.css';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import FallLockSystem from './pages/FallLockSystem';
+// import './App.css';
 import KitManagement from './sensor_kit/kitManagement';
+import Register from './pages/Register';
+
+
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
           <Route path="/fallLockSystem" element={<FallLockSystem />} />
           <Route path="/sensorKit" element={<KitManagement />} />
           <Route path="/map" elemeent={<map />} />
+          <Route path="/register" element={<Register />} />
+          
+      
           {/* Add more routes as needed */}
         </Routes>
           
