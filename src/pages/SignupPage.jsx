@@ -1,85 +1,62 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import drillingFluidImg from '../assets/drilling-fluid.png';
+import tamilnaduLogo from '../assets/tn_logo.png';
+import './styles/signup.css';
 
 function SignupPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the signup logic
-    console.log('Signup attempt with:', { name, email, password, confirmPassword });
+    console.log('Signup Data:', formData);
   };
 
   return (
     <div className="signup-page">
-      <div className="login-container">
-        <div className="login-form-container">
-          <h2>Sign Up</h2>
-          <p>Welcome !! Please enter your details.</p>
-          
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name <span className="required">*</span></label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                placeholder=""
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="email">Email <span className="required">*</span></label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder=""
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="password">Password <span className="required">*</span></label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder=""
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm password <span className="required">*</span></label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                placeholder=""
-              />
-            </div>
-            
-            <button type="submit" className="submit-button">Submit</button>
-            
-            <div className="signup-link">
-              Already have an account? <Link to="/login">Login</Link>
-            </div>
-          </form>
+      <div className="signup-image">
+      <div className="logo-header">
+          <img src={tamilnaduLogo} alt="Tamil Nadu Logo" />
+          <div>
+            <h3>Government of Tamilnadu</h3>
+            <span>தமிழ்நாடு அரசு</span>
+          </div>
         </div>
-        <div className="login-image-container">
-          <img src={drillingFluidImg} alt="Drilling fluid" />
-        </div>
+        <img src={drillingFluidImg} alt="Drilling fluid" />
+      </div>
+      <div className="signup-form">
+        
+        <h2>Sign Up</h2>
+        <p>Welcome !! Please enter your details.</p>
+
+        <form onSubmit={handleSubmit}>
+          <label>Name *</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+
+          <label>Email *</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+          <label>Password *</label>
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+
+          <label>Confirm password *</label>
+          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
+
+          <button type="submit">Submit</button>
+
+          <p className="footer">
+            Have an account? <Link to="/login">Sign in</Link>
+          </p>
+        </form>
       </div>
     </div>
   );

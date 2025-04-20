@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import drillingFluidImg from '../assets/drilling-fluid.png';
+import tamilnaduLogo from '../assets/tn_logo.png'; // Add this
+
+import './styles/login.css'; // Import the updated CSS
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -9,72 +12,69 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the login logic
     console.log('Login attempt with:', { email, password, rememberMe });
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-form-container">
+    <div className="auth-wrapper">
+      <div className="auth-left">
+        <div className="auth-header">
+          <img src={tamilnaduLogo} alt="TN Logo" className="tn-logo" />
+          <div>
+            <h3>Government of Tamilnadu</h3>
+            <p>தமிழ்நாடு அரசு</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="auth-form">
           <h2>Login</h2>
           <p>Welcome back! Please enter your details.</p>
-          
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email <span className="required">*</span></label>
+
+          <label>Email *</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <label>Password *</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <div className="form-footer">
+            <label className="remember-me">
               <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder=""
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
               />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="password">Password <span className="required">*</span></label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder=""
-              />
-            </div>
-            
-            <div className="form-options">
-              <div className="remember-me">
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <label htmlFor="rememberMe">Remember Me</label>
-              </div>
-              <Link to="/forgot-password" className="forgot-password">Forgot Password</Link>
-            </div>
-            
-            <button type="submit" className="sign-in-button">Sign in</button>
-            
-            <div className="google-signin">
-              <button type="button" className="google-button">
-                <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google logo" width="18" height="18" />
-                Sign in with Google
-              </button>
-            </div>
-            
-            <div className="signup-link">
-              Don't have an account? <Link to="/signup">Sign up</Link>
-            </div>
-          </form>
-        </div>
-        <div className="login-image-container">
-          <img src={drillingFluidImg} alt="Drilling fluid" />
-        </div>
+              Remember Me
+            </label>
+            <Link to="/forgot-password" className="forgot-password">Forget Password</Link>
+          </div>
+
+          <button type="submit" className="primary-btn">Sign in</button>
+
+          <div className="google-login">
+            <button type="button" className="google-btn">
+              <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google" />
+              Sign in with Google
+            </button>
+          </div>
+
+          <p className="footer-text">
+            Don’t have an account? <Link to="/signup">Sign up</Link>
+          </p>
+        </form>
+      </div>
+
+      <div className="auth-right">
+        <img src={drillingFluidImg} alt="Drilling fluid" />
       </div>
     </div>
   );

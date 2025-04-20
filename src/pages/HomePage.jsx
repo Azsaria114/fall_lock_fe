@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./HomePage.css";
+import "./styles/HomePage.css";
 import tnLogo from "../assets/tn_logo.png";
 
 // Import background images correctly
@@ -67,9 +67,9 @@ const HomePage = () => {
 
           {/* Corrected Button Styling */}
           <div className="button-container">
-  <span>Want to know more?</span>
-  <button className="sign-up" onClick={handleSignUp}>Sign Up</button>
-</div>
+            <span>Want to know more?</span>
+            <button className="sign-up" onClick={handleSignUp}>Sign Up</button>
+          </div>
 
 
         </div>

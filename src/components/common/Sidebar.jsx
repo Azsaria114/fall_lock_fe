@@ -1,35 +1,55 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
-//import map from "../sensor_kit/mapPage.js"
-  
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faToolbox,
+  faQuestionCircle,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faComments,
+} from "@fortawesome/free-regular-svg-icons"; // outline-style (free)
 
 const Sidebar = () => {
-  const location = useLocation(); // Get current path to highlight active link
+  const location = useLocation();
 
   return (
     <aside className="sidebar">
       <nav>
         <ul>
-          <li className={location.pathname === "/" ? "active" : ""}>
-            <Link to="/fallLockSystem">🏠 Home</Link>
+          <li className={location.pathname === "/fallLockSystem" ? "active" : ""}>
+            <Link to="/fallLockSystem">
+              <FontAwesomeIcon icon={faHome} /> Home
+            </Link>
           </li>
           <li>
-            <Link to="#">👤 About</Link>
+            <Link to="#">
+              <FontAwesomeIcon icon={faUser} /> About
+            </Link>
           </li>
-          <li className={location.pathname === "/sensor-kit-management" ? "active" : ""}>
-            <Link to="/sensorkit">🛠️ Sensor Kit Management</Link>
+          <li className={location.pathname === "/sensorkit" ? "active" : ""}>
+            <Link to="/sensorkit">
+              <FontAwesomeIcon icon={faToolbox} /> Sensor Kit Management
+            </Link>
           </li>
           <li>
-            <Link to="#">❔ Help</Link>
+            <Link to="#">
+              <FontAwesomeIcon icon={faQuestionCircle} /> Help
+            </Link>
           </li>
           <li>
-            <Link to="#">💬 FAQ</Link>
+            <Link to="#">
+              <FontAwesomeIcon icon={faComments} /> FAQ
+            </Link>
           </li>
         </ul>
       </nav>
-      <button className="logout-button">🚪 Logout</button>
+      <button className="logout-button">
+        <FontAwesomeIcon icon={faRightFromBracket} /> Logout
+      </button>
     </aside>
   );
 };
