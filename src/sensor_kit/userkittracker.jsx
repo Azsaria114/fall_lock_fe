@@ -1,29 +1,75 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "../components/common/UserNavbar";
 import Sidebar from "../components/common/UserSidebar";
 import "../sensor_kit/userkittracker.css";
 
 function Userkittracker() {
+  const [kitData, setKitData] = useState(null);
   const [issueText, setIssueText] = useState("");
   const [queryText, setQueryText] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [submittingIssue, setSubmittingIssue] = useState(false);
+  const [submittingQuery, setSubmittingQuery] = useState(false);
 
-  const handleIssueChange = (e) => {
-    setIssueText(e.target.value);
+  useEffect(() => {
+    // Fetch kit details from backend
+    const fetchKitData = async () => {
+      try {
+        const response = await axios.get("/api/kit-details"); // replace with actual endpoint
+        setKitData(response.data);
+      } catch (error) {
+        console.error("Error fetching kit details:", error);
+        alert("Failed to load kit details.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchKitData();
+  }, []);
+
+  const handleIssueSubmit = async () => {
+    try {
+      setSubmittingIssue(true);
+      await axios.post("/api/issues", {
+        kitId: kitData.kitId,
+        issue: issueText,
+      });
+      alert("Issue submitted successfully!");
+      setIssueText("");
+    } catch (error) {
+      console.error("Error submitting issue:", error);
+      alert("Failed to submit issue.");
+    } finally {
+      setSubmittingIssue(false);
+    }
   };
 
-  const handleQueryChange = (e) => {
-    setQueryText(e.target.value);
+  const handleQuerySubmit = async () => {
+    try {
+      setSubmittingQuery(true);
+      await axios.post("/api/queries", {
+        kitId: kitData.kitId,
+        query: queryText,
+      });
+      alert("Query submitted successfully!");
+      setQueryText("");
+    } catch (error) {
+      console.error("Error submitting query:", error);
+      alert("Failed to submit query.");
+    } finally {
+      setSubmittingQuery(false);
+    }
   };
 
-  const handleIssueSubmit = () => {
-    alert("Issue submitted: " + issueText);
-    setIssueText("");
-  };
+  if (loading) {
+    return <div className="kit-status-container">Loading...</div>;
+  }
 
-  const handleQuerySubmit = () => {
-    alert("Query submitted: " + queryText);
-    setQueryText("");
-  };
+  if (!kitData) {
+    return <div className="kit-status-container">No kit data found.</div>;
+  }
 
   return (
     <div className="kit-status-container">
@@ -34,12 +80,12 @@ function Userkittracker() {
           <h2 className="section-title">Kit Status</h2>
 
           <div className="kit-card">
-            <div><strong>Kit Name:</strong> Kitname1</div>
-            <div><strong>Kit ID:</strong> 01232</div>
-            <div><strong>Status:</strong> Request Accepted</div>
-            <div><strong>Start Date:</strong> 12/04/2025</div>
-            <div><strong>End Date:</strong> 14/04/2025</div>
-            <div><strong>Active Location:</strong> Valiyoor, Tirunelveli</div>
+            <div><strong>Kit Name:</strong> {kitData.kitName}</div>
+            <div><strong>Kit ID:</strong> {kitData.kitId}</div>
+            <div><strong>Status:</strong> {kitData.status}</div>
+            <div><strong>Start Date:</strong> {kitData.startDate}</div>
+            <div><strong>End Date:</strong> {kitData.endDate}</div>
+            <div><strong>Active Location:</strong> {kitData.location}</div>
           </div>
 
           {/* Issues Section */}
@@ -48,11 +94,15 @@ function Userkittracker() {
             className="issue-textarea"
             placeholder="Describe the issue..."
             value={issueText}
-            onChange={handleIssueChange}
+            onChange={(e) => setIssueText(e.target.value)}
           />
           {issueText.trim() !== "" && (
-            <button className="submit-btn" onClick={handleIssueSubmit}>
-              Submit
+            <button
+              className="submit-btn"
+              onClick={handleIssueSubmit}
+              disabled={submittingIssue}
+            >
+              {submittingIssue ? "Submitting..." : "Submit"}
             </button>
           )}
 
@@ -62,11 +112,15 @@ function Userkittracker() {
             className="issue-textarea"
             placeholder="Write your query..."
             value={queryText}
-            onChange={handleQueryChange}
+            onChange={(e) => setQueryText(e.target.value)}
           />
           {queryText.trim() !== "" && (
-            <button className="submit-btn" onClick={handleQuerySubmit}>
-              Submit
+            <button
+              className="submit-btn"
+              onClick={handleQuerySubmit}
+              disabled={submittingQuery}
+            >
+              {submittingQuery ? "Submitting..." : "Submit"}
             </button>
           )}
         </div>
