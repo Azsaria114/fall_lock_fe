@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Navbar from "../components/common/Navbar";
-import Sidebar from "../components/common/Sidebar";
+import Navbar from "../components/common/UserNavbar";
+import Sidebar from "../components/common/UserSidebar";
 import "../sensor_kit/userkittracker.css";
 
 function Userkittracker() {
