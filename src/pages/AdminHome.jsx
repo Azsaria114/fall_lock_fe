@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../components/common/Navbar";
-import Sidebar from "../components/common/Sidebar";
-import "./styles/FallLockSystem.css";
+import Background from "../assets/Background.png";
 import borewell from "../assets/borewell.png";
 import rescue from "../assets/rescue.png";
 import safety from "../assets/safety.png";
-import Background from "../assets/Background.png";
+import Navbar from "../components/common/Navbar";
+import Sidebar from "../components/common/Sidebar";
+import "./styles/AdminHome.css";
 
-const FallLockSystem = () => {
+const AdminHome = () => {
   return (
     <div className="container">
       <Navbar />
@@ -123,7 +123,7 @@ const FallLockSystem = () => {
 
         {/* Features Section */}
         <section className="features">
-          <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
+          <h2 style={{ textAlign: "center",marginBottom:"20px", fontWeight: "bold" }}>
             Why Choose Fall Lock System?
           </h2>
           <div className="feature-box">
@@ -183,4 +183,4 @@ const FallLockSystem = () => {
   );
 };
 
-export default FallLockSystem;
+export default AdminHome;

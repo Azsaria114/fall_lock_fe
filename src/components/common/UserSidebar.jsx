@@ -20,14 +20,14 @@ const Sidebar = () => {
     <aside className="sidebar">
       <nav>
         <ul>
-          <li className={location.pathname === "/AdminHome" ? "active" : ""}>
-            <Link to="/AdminHome">
+          <li className={location.pathname === "/UserHome" ? "active" : ""}>
+            <Link to="/UserHome">
               <FontAwesomeIcon icon={faHome} /> Home
             </Link>
           </li>
-          <li className={location.pathname === "/sensorkit" ? "active" : ""}>
-            <Link to="/sensorkit">
-              <FontAwesomeIcon icon={faToolbox} /> Sensor Kit Management
+          <li className={location.pathname === "/userkittracker" ? "active" : ""}>
+            <Link to="/userkittracker">
+              <FontAwesomeIcon icon={faToolbox} /> Sensor Kit Tracker
             </Link>
           </li>
           <li>
