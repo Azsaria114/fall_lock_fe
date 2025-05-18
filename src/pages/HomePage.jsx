@@ -30,7 +30,7 @@ const HomePage = () => {
 
   // Handle navigation
   const handleSignUp = () => {
-    navigate("/signup"); // Navigate to the Sign Up page
+    navigate("/login"); // Navigate to the login page
   };
 
   return (
@@ -68,7 +68,7 @@ const HomePage = () => {
           {/* Corrected Button Styling */}
           <div className="button-container">
             <span>Want to know more?</span>
-            <button className="sign-up" onClick={handleSignUp}>Sign Up</button>
+            <button className="sign-up" onClick={handleSignUp}>Login</button>
           </div>
 
 

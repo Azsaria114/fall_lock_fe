@@ -31,13 +31,10 @@ const Request = () => {
           placeholder="🔍 Search..."
           className="request-search"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="request-buttons">
-          <button className="filter-btn">Filter ⬇</button>
-          <button className="export-btn">Export ⬇</button>
-        </div>
-      </div>
+          onChange={(e) => setSearch(e.target.value)}/>
+          <button className="request-btn">Filter ⬇</button>
+          <button className="request-btn">Export ⬇</button>
+    </div>
 
       <div className="table-container">
         <table className="kit-table">
